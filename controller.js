@@ -61,3 +61,16 @@ exports.updateProduk = (req, res) => {
         }
     });
 };
+
+//delete data produk berdasarkan id
+exports.hapusProduk = (req, res) => {
+    let id_produk = req.body.id_produk;
+
+    connection.query(`DELETE FROM Produk WHERE id_produk=?`, [id_produk], (error, rows, field) => {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok(`berhasil menghapus data!`, res);
+        }
+    });
+};
