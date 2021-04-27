@@ -44,3 +44,20 @@ exports.tambahproduk = (req, res) => {
         }
     });
 };
+
+//update data produk berdasarkan id
+exports.updateProduk = (req, res) => {
+
+    let id_produk = req.body.id_produk;
+    let namaProduk = req.body.namaProduk;
+    let harga = req.body.harga;
+    let stok = req.body.stok;
+
+    connection.query(`UPDATE Produk SET namaProduk=?, harga=?, stok=? WHERE id_produk=?`, [namaProduk, harga, stok, id_produk], (error, rows, field) => {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok('berhasil update!', res);
+        }
+    });
+};
