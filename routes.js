@@ -11,4 +11,7 @@ module.exports = (app) => {
 
     app.route('/tampil/:id')
         .get(jsonku.tampilprodukid);
+
+    app.route('/tambah')
+        .post(jsonku.tambahproduk);
 };

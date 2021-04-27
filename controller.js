@@ -29,3 +29,18 @@ exports.tampilprodukid = (req, res) => {
         }
     });
 };
+
+//menambah data produk
+exports.tambahproduk = (req, res) => {
+    let namaProduk = req.body.namaProduk;
+    let harga = req.body.harga;
+    let stok = req.body.stok;
+
+    connection.query(`INSERT INTO Produk (namaProduk, harga, stok) VALUES (?,?,?)`, [namaProduk, harga, stok], (error, rows, field) => {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok(`berhasil menambah data!`, res);
+        }
+    });
+};
